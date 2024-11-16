@@ -1,0 +1,550 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+    color: white;
+    overflow: hidden;
+    position: relative;
+    padding: 0 20px;
+}
+
+h1 {
+    font-family: 'Press Start 2P', cursive;
+    font-size: 3rem;
+    margin-bottom: 20px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+.container {
+    text-align: center;
+    z-index: 2;
+}
+
+#startButton {
+    background-color: #2575fc;
+    color: white;
+    font-size: 1.2rem;
+    padding: 10px 30px;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+#startButton:hover {
+    background-color: #6a11cb;
+    transform: scale(1.1);
+}
+
+#textToType {
+    font-size: 1.5rem;
+    line-height: 1.5;
+    color: #c8c8c8;
+    margin-top: 20px;
+    letter-spacing: 1px;
+    font-family: monospace;
+    display: inline-block;
+}
+
+.correct-char {
+    color: #ffa07a;
+}
+
+.incorrect-char {
+    color: #ff6347;
+}
+
+@keyframes fadeInUp {
+    0% {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+#textToType span {
+    animation: fadeInUp 0.3s ease forwards;
+}
+
+#inputArea {
+    width: 100%;
+    height: 100px;
+    font-size: 1.2rem;
+    margin-top: 20px;
+    padding: 10px;
+    border: none;
+    border-radius: 10px;
+    outline: none;
+    background-color: #f0f0f0;
+    color: #333;
+}
+
+textarea:focus {
+    background-color: #dcdcdc;
+}
+
+.hidden {
+    display: none;
+}
+
+.stats {
+    margin-top: 20px;
+    font-size: 1.2rem;
+    color: #ddd;
+}
+
+.popup {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: rgba(0, 0, 0, 0.7);
+    padding: 40px;
+    border-radius: 12px;
+    text-align: center;
+    color: white;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+    z-index: 3;
+}
+
+.popup button {
+    background-color: #2575fc;
+    color: white;
+    font-size: 1rem;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+}
+
+.popup button:hover {
+    background-color: #6a11cb;
+}
+
+.light {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: radial-gradient(circle, rgba(255, 255, 255, 0.2) 10%, transparent 60%);
+    animation: lightEffect 2s ease-in-out infinite;
+    z-index: 1;
+}
+
+@keyframes lightEffect {
+    0% {
+        transform: scale(1);
+        opacity: 0.3;
+    }
+    50% {
+        transform: scale(1.1);
+        opacity: 0.8;
+    }
+    100% {
+        transform: scale(1);
+        opacity: 0.3;
+    }
+}
+
+.signature {
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
+    font-family: 'Great Vibes', cursive;
+    font-size: 2rem;
+    color: #aaa;
+    opacity: 0.7;
+    transition: opacity 0.3s ease;
+}
+
+.signature:hover {
+    opacity: 1;
+}
+
+
+.navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between; /* Horizontal space between items */
+    background-color: #6A42C2;
+    padding: 10px 20px;
+    border-radius: 30px;
+    color: white;
+    gap: 10px;
+    font-family: 'Roboto', sans-serif;
+    max-width: 300px; /* Set a max-width for alignment */
+    margin: 20px auto; /* Center the navbar */
+}
+
+#levelSelect {
+    background-color: transparent;
+    border: none;
+    color: white;
+    font-size: 1rem;
+    outline: none;
+    appearance: none;
+    cursor: pointer;
+    padding: 5px; /* Add padding to align it properly */
+}
+
+#modeToggle, #soundToggle, #newPage {
+    background-color: transparent;
+    border: none;
+    color: white;
+    font-size: 1.2rem;
+    cursor: pointer;
+    padding: 5px; /* Add padding to align */
+}
+
+#modeToggle:hover, #soundToggle:hover, #newPage:hover {
+    color: #FFD93D;
+}
+
+.dark-mode {
+    background: #333;
+    color: white;
+}
+
+.dark-mode .navbar {
+    background-color: #444;
+}
+
+.navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #6A42C2;
+    padding: 10px 20px;
+    color: white;
+    gap: 10px;
+    font-family: 'Roboto', sans-serif;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000; /* Make sure it stays on top of other elements */
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Optional: add a shadow for better visibility */
+}
+
+#levelSelect {
+    background-color: transparent;
+    border: none;
+    color: white;
+    font-size: 1rem;
+    outline: none;
+    appearance: none;
+    cursor: pointer;
+    padding: 5px;
+}
+
+#modeToggle, #soundToggle, #newPage {
+    background-color: transparent;
+    border: none;
+    color: white;
+    font-size: 1.2rem;
+    cursor: pointer;
+    padding: 5px;
+}
+
+#modeToggle:hover, #soundToggle:hover, #newPage:hover {
+    color: #FFD93D;
+}
+
+.dark-mode {
+    background: #333;
+    color: white;
+}
+
+.dark-mode .navbar {
+    background-color: #444;
+}
+
+.container {
+    padding-top: 60px; /* Add some padding-top to avoid overlap with fixed navbar */
+}
+
+.navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #6A42C2;
+    padding: 10px 20px;
+    color: white;
+    gap: 10px;
+    font-family: 'Roboto', sans-serif;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+#levelSelect {
+    background-color: transparent;
+    border: none;
+    color: white;
+    font-size: 1rem;
+    outline: none;
+    cursor: pointer;
+    padding: 5px;
+}
+
+.arrow {
+    font-size: 0.8rem;
+    margin-left: 5px;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #444;
+    min-width: 100px;
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+}
+
+.dropdown-content a {
+    color: white;
+    padding: 8px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown-content a:hover {
+    background-color: #666;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+#modeToggle, #soundToggle, #newPage {
+    background-color: transparent;
+    border: none;
+    color: white;
+    font-size: 1.2rem;
+    cursor: pointer;
+    padding: 5px;
+}
+
+#modeToggle:hover, #soundToggle:hover, #newPage:hover {
+    color: #FFD93D;
+}
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #2c3e50; /* Adjust to match your theme */
+}
+
+.navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: linear-gradient(145deg, #6A42C2, #8B5DFF); /* Light and dark shade for 3D effect */
+    border-radius: 30px;
+    padding: 15px 25px;
+    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.3), -5px -5px 15px rgba(255, 255, 255, 0.1);
+    color: white;
+    gap: 10px;
+    font-family: 'Roboto', sans-serif;
+    position: fixed;
+    top: 10px; /* Adjusted to add some space from top */
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1000;
+    transition: 0.3s ease;
+}
+
+.navbar:hover {
+    box-shadow: 8px 8px 20px rgba(0, 0, 0, 0.4), -8px -8px 20px rgba(255, 255, 255, 0.1);
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+#levelSelect {
+    background: linear-gradient(145deg, #6A42C2, #8B5DFF);
+    border: none;
+    color: white;
+    font-size: 1rem;
+    outline: none;
+    cursor: pointer;
+    padding: 4px 10px;
+    border-radius: 20px;
+    box-shadow: inset 2px 2px 5px rgba(0, 0, 0, 0.2), inset -2px -2px 5px rgba(255, 255, 255, 0.1);
+    transition: 0.3s ease;
+}
+
+#levelSelect:hover {
+    box-shadow: inset 3px 3px 8px rgba(0, 0, 0, 0.3), inset -3px -3px 8px rgba(255, 255, 255, 0.15);
+}
+
+.arrow {
+    font-size: 0.8rem;
+    margin-left: 5px;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #6A42C2;
+    min-width: 100px;
+    border-radius: 10px;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.3);
+    z-index: 1;
+    overflow: hidden;
+}
+
+.dropdown-content a {
+    color: white;
+    padding: 8px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown-content a:hover {
+    background-color: #6A42C2;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+#modeToggle, #soundToggle, #newPage {
+    background: linear-gradient(145deg, #6A42C2, #8B5DFF);
+    border: none;
+    color: white;
+    font-size: 1.2rem;
+    cursor: pointer;
+    padding: 10px;
+    border-radius: 50%;
+    box-shadow: 3px 3px 8px rgba(0, 0, 0, 0.2), -3px -3px 8px rgba(255, 255, 255, 0.1);
+    transition: 0.3s ease;
+}
+
+#modeToggle:hover, #soundToggle:hover, #newPage:hover {
+    box-shadow: inset 3px 3px 8px rgba(0, 0, 0, 0.3), inset -3px -3px 8px rgba(255, 255, 255, 0.15);
+}
+
+.popup {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 25px;
+    border-radius: 20px;
+    text-align: center;
+    z-index: 3;
+    width: 380px;
+    font-family: 'Roboto', sans-serif;
+    color: #f1f1f1; /* লেখা সাদা রাখলেও এটি ব্যাকগ্রাউন্ডের সাথে ভালো কনট্রাস্ট দেবে */
+    background: linear-gradient(145deg, #30343f, #3a3f50); /* প্রধান ব্যাকগ্রাউন্ড */
+    box-shadow: inset 3px 3px 8px rgba(255, 255, 255, 0.2), 
+                8px 8px 20px rgba(0, 0, 0, 0.3), 
+                -8px -8px 20px rgba(0, 0, 0, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: all 0.3s ease;
+}
+
+/* পাশ ও ফেল-এর জন্য আলাদা ছায়া */
+.popup.pass {
+    box-shadow: inset 3px 3px 8px rgba(255, 255, 255, 0.2), 
+                8px 8px 20px rgba(0, 255, 0, 0.4), 
+                -8px -8px 20px rgba(0, 255, 0, 0.3);
+}
+
+.popup.fail {
+    box-shadow: inset 3px 3px 8px rgba(255, 255, 255, 0.2), 
+                8px 8px 20px rgba(255, 0, 0, 0.4), 
+                -8px -8px 20px rgba(255, 0, 0, 0.3);
+}
+
+.popup h2 {
+    font-size: 1.8rem;
+    margin-bottom: 20px;
+    color: #e5e5e5; /* হেডিংয়ের রঙ একটু হালকা */
+    text-transform: uppercase;
+    letter-spacing: 1.2px;
+    background: linear-gradient(145deg, #ffffff, #b0b3c1);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.popup p {
+    font-size: 1rem;
+    margin: 8px 0;
+    color: #d1d1d1;
+}
+
+.popup button {
+    background-color: #3b3f4a;
+    color: #e5e5e5;
+    font-size: 1rem;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: 0.3s;
+    box-shadow: 3px 3px 6px rgba(0, 0, 0, 0.3), -3px -3px 6px rgba(255, 255, 255, 0.1);
+}
+
+.popup button:hover {
+    background-color: #454a54;
+    transform: translateY(-3px);
+    box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.4), -4px -4px 8px rgba(255, 255, 255, 0.2);
+}
+
+
+
+
+#textContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%; /* TextContainer এর উচ্চতা নির্ধারণ */
+    text-align: center;
+}
+
+
+
+
+#textContainer {
+    width: 380px; /* প্রস্থ নির্ধারণ করুন */
+    height: 100px; /* উচ্চতা নির্ধারণ করুন */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    text-align: center;
+    
+    overflow-y: auto; /* স্ক্রল বার যোগ করা হয়েছে */
+}
+
+#inputArea {
+    width: 100%;
+    height: 100px;
+}
+
+
+
+
+

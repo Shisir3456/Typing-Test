@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Typing Speed Test</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&family=Press+Start+2P&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="navbar">
+        <div class="dropdown">
+            <button id="levelSelect">Level-3 </button>
+            
+            
+            
+            
+            <div class="dropdown-content">
+                <a href="index.html" href="#">Level 1</a>
+                <a href="midiam.html" href="#">Level 2</a>
+                <a href="hard.html" href="#">Level 3</a>
+           
+           
+     
+            </div>
+            
+            
+            
+            
+            
+            
+        </div>
+        <button id="modeToggle">🌗</button>
+        <button id="soundToggle">🎧</button>
+        <a href="newpage.html" id="newPage"> ℹ️</a>
+        <!-- Icon for new page -->
+    </div>
+    <br>
+    <div class="container">
+        <h1>Typing Speed Test</h1>
+        <button id="startButton">Start Test</button>
+        <div id="textContainer" class="hidden">
+            <p id="textToType"></p>
+        </div>
+        <textarea id="inputArea" placeholder="Start typing here..." disabled></textarea>
+        <div class="stats hidden">
+            <span id="timer">Time: 60s</span>
+            <span id="wpm">WPM: 0</span>
+            <span id="errors">Errors: 0</span>
+            <span id="accuracy">Accuracy: 100%</span>
+        </div>
+    </div>
+    <div id="scorePopup" class="popup hidden">
+        <h2>Typing Test Result</h2>
+        <p> Level-3</p>
+        <p id="finalWpm">WPM: </p>
+        <p id="finalCharsTyped">Characters Typed: </p>
+        <p id="finalCorrect">Correct Characters: </p>
+        <p id="finalErrors">Incorrect Characters: </p>
+        
+        <p id="finalAccuracy">Accuracy: </p>
+        <p id="finalMark">Mark: </p>
+        <p id="resultMessage"></p>
+        <p id="suggestionMessage"></p>
+        <button onclick="closePopup()">Close</button>
+    </div>
+
+    <div id="lightEffect" class="light"></div>
+    <div class="signature">Husain Ahmed</div>
+
+    <script src="hard.js"></script>
+</body>
+</html>
